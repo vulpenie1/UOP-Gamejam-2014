@@ -8,7 +8,12 @@ public class menuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		if ( PlayerPrefs.GetInt("volume") < 0.0f )
+		{
+			PlayerPrefs.SetFloat ("volume", 0.75f);
+			PlayerPrefs.Save();
+			Debug.Log ("Volume was reset");
+		}
 	}
 	
 	// Update is called once per frame
@@ -80,5 +85,5 @@ public class menuScript : MonoBehaviour {
 	void OnMouseExit()
 	{
 		Destroy( GameObject.FindWithTag("menuOutline") );
-	}
+	}	
 }
