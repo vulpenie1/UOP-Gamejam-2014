@@ -10,9 +10,6 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-<<<<<<< HEAD
-	public GameObject stoneDeposit;
-=======
     static Vector2 BULLSEYE_POSITION = new Vector2(10.0f, 10.0f);
     static private int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
@@ -25,7 +22,6 @@ public class GameManager : MonoBehaviour {
         ePlayer = 0,
         eRock,
     };
->>>>>>> 331a32c79cf4d63090b38f18d7756429fccbda48
 
     void Awake()
     {
