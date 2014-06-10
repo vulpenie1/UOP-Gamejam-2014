@@ -7,7 +7,7 @@ public class optionsMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		newVolume = PlayerPrefs.GetFloat ("volume") * 100;
+		newVolume = GameManager.getVolume() * 100;
 		Debug.Log (newVolume);
 	}
 	
@@ -19,8 +19,7 @@ public class optionsMenu : MonoBehaviour {
 	void OnGUI() {
 		newVolume = GUI.HorizontalSlider(new Rect( ( Screen.width / 2 ) - 150, ( Screen.height / 2 ) , 300, 150), newVolume, 0.0F, 100.0F);
 
-		PlayerPrefs.SetFloat ( "volume", ( newVolume / 100 ) );//badly inefficiant
-		PlayerPrefs.Save ();
+		GameManager.setVolume( ( newVolume ) );
 
 		GUI.Label( new Rect( ( Screen.width / 2 ) - 50, ( Screen.height / 2 ) - 25 , 300, 25 ), "Volume: " + newVolume);
 

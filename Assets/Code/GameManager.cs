@@ -3,8 +3,11 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 	public GameObject stonesDeposit;
+	public static float volume = PlayerPrefs.GetFloat ("volume");
 
 	void Awake() {
+		volume = PlayerPrefs.GetFloat ("volume");
+		//volume = 1.0f;
 	}
 	
 	void Update() {	
@@ -22,5 +25,17 @@ public class GameManager : MonoBehaviour {
 		}
 
 		return gm;
+	}
+
+	public static float getVolume()
+	{
+		return volume;
+	}
+
+	public static void setVolume( float newVolume )
+	{
+		volume = newVolume / 100;
+		PlayerPrefs.SetFloat ("volume", volume );
+		PlayerPrefs.Save();
 	}
 }
