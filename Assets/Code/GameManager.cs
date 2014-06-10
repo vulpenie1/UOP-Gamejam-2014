@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 	void Update() {	
 	}
 
-	enum eTeam {
+	public enum eTeam {
 		TEAM_1,
 		TEAM_2
 	}

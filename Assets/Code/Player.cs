@@ -2,11 +2,14 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
+	public GameObject rock;
+	//public eTeam team;
+
 	private float speed =		50.0f;
 	private float shootSpeed =	18.0f;
 	private float sensitivity =	4.2f;
 
-	public GameObject rock;
+	private bool canShoot = true;
 
 	void Start() {
 		rock.transform.parent = transform;
@@ -37,7 +40,9 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ShootRock() {
-		if ( Input.GetMouseButtonDown( 0 ) ) {
+		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
+			canShoot = false;
+
 			rock.transform.parent = null;
 
 			Vector3 forwardForce = transform.forward;
