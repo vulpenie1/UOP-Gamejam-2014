@@ -54,6 +54,7 @@ public class menuScript : MonoBehaviour {
 		}
 	}
 
+	//Mouse enter function
 	void OnMouseEnter()
 	{
 		if ( itemName == "start game" )
