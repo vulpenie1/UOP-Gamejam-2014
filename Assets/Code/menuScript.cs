@@ -5,17 +5,19 @@ public class menuScript : MonoBehaviour {
 
 	public string itemName;
 	public GameObject menuOutline;
+	public AudioClip mouseOver;
+	public AudioClip mouseClick;
+	public AudioClip mouseBack;
 
 	// Use this for initialization
 	void Start () {
-		if ( PlayerPrefs.GetInt("volume") < 0.0f )
+		if ( PlayerPrefs.GetFloat("volume") < 0.0f )
 		{
-			PlayerPrefs.SetFloat ("volume", 0.75f);
-			PlayerPrefs.Save();
+			GameManager.setVolume( 1.0f );
 			Debug.Log ("Volume was reset");
 		}
 
-		audio.volume = PlayerPrefs.GetFloat ("volume");
+		AudioListener.volume = GameManager.getVolume();
 	}
 	
 	// Update is called once per frame
@@ -29,7 +31,6 @@ public class menuScript : MonoBehaviour {
 		{
 			Debug.Log("Start Game");
 			Application.LoadLevel("dansTest");
-
 		}
 
 		else if ( itemName == "options" )
@@ -55,6 +56,8 @@ public class menuScript : MonoBehaviour {
 			Debug.Log("back");
 			Application.LoadLevel("mainMenu");
 		}
+
+		AudioSource.PlayClipAtPoint(mouseClick, transform.position);
 	}
 
 	//Mouse enter function
@@ -84,6 +87,8 @@ public class menuScript : MonoBehaviour {
 		{
 			Instantiate( menuOutline, transform.position, transform.rotation );
 		}
+
+		AudioSource.PlayClipAtPoint(mouseOver, transform.position);
 	}
 
 	void OnMouseExit()

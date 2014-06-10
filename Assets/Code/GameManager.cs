@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+<<<<<<< HEAD
     static Vector2 BULLSEYE_POSITION = new Vector2(10.0f, 10.0f);
     static private int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
@@ -32,6 +33,21 @@ public class GameManager : MonoBehaviour {
 	
 	void Update() {	
 
+=======
+	public GameObject stonesDeposit;
+	public static float volume = PlayerPrefs.GetFloat ("volume");
+
+	void Awake() {
+		volume = PlayerPrefs.GetFloat ("volume");
+		//volume = 1.0f;
+	}
+	
+	void Update() {	
+		if ( Input.GetKeyUp( KeyCode.Escape ) )
+		{
+			Application.LoadLevel("mainMenu");
+		}
+>>>>>>> 6595167e78463383562485b933ee1b948a86c512
 	}
 
 	public enum eTeam {
@@ -48,6 +64,7 @@ public class GameManager : MonoBehaviour {
 		return gm;
 	}
 
+<<<<<<< HEAD
 
     private void UpdateScores()
     {
@@ -145,4 +162,17 @@ public class GameManager : MonoBehaviour {
     {
         return mGameState;
     }
+=======
+	public static float getVolume()
+	{
+		return volume;
+	}
+
+	public static void setVolume( float newVolume )
+	{
+		volume = newVolume / 100;
+		PlayerPrefs.SetFloat ("volume", volume );
+		PlayerPrefs.Save();
+	}
+>>>>>>> 6595167e78463383562485b933ee1b948a86c512
 }
