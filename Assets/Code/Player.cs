@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 	public GameObject rock;
-	//public eTeam team;
+	public GameManager.eTeam team;
+	public GameObject camera;
 
 	private float speed =		50.0f;
 	private float shootSpeed =	18.0f;
 	private float sensitivity =	4.2f;
 
-	private bool canShoot = true;
+	private bool canShoot =		true;
 
 	void Start() {
 		rock.transform.parent = transform;
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour {
 			canShoot = false;
 
 			rock.transform.parent = null;
+			camera.transform.parent = rock.transform;
 
 			Vector3 forwardForce = transform.forward;
 			forwardForce *= ( speed * shootSpeed );
