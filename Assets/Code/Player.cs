@@ -85,17 +85,15 @@ public class Player : MonoBehaviour {
 
 			stoneClone.transform.parent = null;
 			//camera.transform.parent = stoneClone.transform;
-            GameManager.Singleton().ChangeState(GameManager.eGameState.eRock);
+            SwitchCamera(GameManager.eGameState.eRock);
             
 			Vector3 forwardForce = transform.forward;
 			forwardForce *= ( shootSpeed * shootSpeed );
 
 			stoneClone.rigidbody.AddForce( forwardForce );
+            stoneClone.Fire();
 
-            if (StonesInSupply() > 0)
-            {
-                GiveStone();
-            }
+       		StartCoroutine( StoneFired() );      
 		}
 	}
 
@@ -111,6 +109,24 @@ public class Player : MonoBehaviour {
             }
         }
 
+        print(i);
+
         return i;
+    }
+
+    private IEnumerator StoneFired()
+    {
+        yield return new WaitForSeconds( 3 );
+		if (StonesInSupply() > 0)
+        {
+            GiveStone();
+            SwitchCamera(GameManager.eGameState.ePlayer);
+            canShoot = true;
+        }
+    }
+
+    private void SwitchCamera(GameManager.eGameState state)
+    {
+        GameManager.Singleton().ChangeState(state);
     }
 }
