@@ -3,7 +3,8 @@ using System.Collections;
 
 public class menuScript : MonoBehaviour {
 
-	public string name;
+	public string itemName;
+	public GameObject menuOutline;
 
 	// Use this for initialization
 	void Start () {
@@ -17,32 +18,56 @@ public class menuScript : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if ( name == "start game" )
+		if ( itemName == "start game" )
 		{
 			Debug.Log("Start Game");
 			Application.LoadLevel("dansTest");
 		}
 
-		if ( name == "options" )
+		else if ( itemName == "options" )
 		{
 			Debug.Log("Options");
 			Application.LoadLevel("optionsMenu");
 		}
 
-
-		if ( name == "credits" )
+		else if ( itemName == "credits" )
 		{
 			Debug.Log("Credits");
 			Application.LoadLevel("creditsMenu");
 		}
 
-
-		if ( name == "exit" )
+		else if ( itemName == "exit" )
 		{
 			Debug.Log("Exit");
 			Application.Quit();
 		}
+	}
 
+	void OnMouseEnter()
+	{
+		if ( itemName == "start game" )
+		{
+			Instantiate( menuOutline, transform.position, transform.rotation );
+		}
+		
+		else if ( itemName == "options" )
+		{
+			Instantiate( menuOutline, transform.position, transform.rotation );
+		}
+		
+		else if ( itemName == "credits" )
+		{
+			Instantiate( menuOutline, transform.position, transform.rotation );
+		}
+		
+		else if ( itemName == "exit" )
+		{
+			Instantiate( menuOutline, transform.position, transform.rotation );
+		}
+	}
 
+	void OnMouseExit()
+	{
+		Destroy( GameObject.FindWithTag("menuOutline") );
 	}
 }
