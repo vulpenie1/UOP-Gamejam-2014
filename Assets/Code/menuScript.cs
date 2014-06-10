@@ -29,6 +29,7 @@ public class menuScript : MonoBehaviour {
 		{
 			Debug.Log("Start Game");
 			Application.LoadLevel("dansTest");
+
 		}
 
 		else if ( itemName == "options" )

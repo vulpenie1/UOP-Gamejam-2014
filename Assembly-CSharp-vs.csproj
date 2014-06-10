@@ -51,7 +51,6 @@
      <Compile Include="Assets\Code\Rock.cs" />
      <Compile Include="Assets\Code\menuScript.cs" />
      <Compile Include="Assets\Code\optionsMenu.cs" />
-     <None Include="Assets\Sounds\hi.txt" />
      <None Include="Assets\Models\hi.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
