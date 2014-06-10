@@ -16,7 +16,7 @@ public class menuScript : MonoBehaviour {
 	
 	}
 
-	void OnMouseDown()
+	void OnMouseUp()
 	{
 		if ( itemName == "start game" )
 		{
@@ -41,6 +41,12 @@ public class menuScript : MonoBehaviour {
 			Debug.Log("Exit");
 			Application.Quit();
 		}
+
+		else if ( itemName == "back" )
+		{
+			Debug.Log("back");
+			Application.LoadLevel("mainMenu");
+		}
 	}
 
 	void OnMouseEnter()
@@ -61,6 +67,11 @@ public class menuScript : MonoBehaviour {
 		}
 		
 		else if ( itemName == "exit" )
+		{
+			Instantiate( menuOutline, transform.position, transform.rotation );
+		}
+
+		else if ( itemName == "back" )
 		{
 			Instantiate( menuOutline, transform.position, transform.rotation );
 		}
