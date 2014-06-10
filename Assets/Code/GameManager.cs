@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update() {	
+		if ( Input.GetKeyUp( KeyCode.Escape ) )
+		{
+			Application.LoadLevel("mainMenu");
+		}
 	}
 
 	public enum eTeam {

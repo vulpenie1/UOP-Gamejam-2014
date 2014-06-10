@@ -30,38 +30,34 @@ public class menuScript : MonoBehaviour {
 		if ( itemName == "start game" )
 		{
 			Debug.Log("Start Game");
-			AudioSource.PlayClipAtPoint(mouseClick, transform.position);
 			Application.LoadLevel("dansTest");
-
 		}
 
 		else if ( itemName == "options" )
 		{
 			Debug.Log("Options");
-			AudioSource.PlayClipAtPoint(mouseClick, transform.position);
 			Application.LoadLevel("optionsMenu");
 		}
 
 		else if ( itemName == "credits" )
 		{
 			Debug.Log("Credits");
-			AudioSource.PlayClipAtPoint(mouseClick, transform.position);
 			Application.LoadLevel("creditsMenu");
 		}
 
 		else if ( itemName == "exit" )
 		{
 			Debug.Log("Exit");
-			AudioSource.PlayClipAtPoint(mouseClick, transform.position);
 			Application.Quit();
 		}
 
 		else if ( itemName == "back" )
 		{
 			Debug.Log("back");
-			AudioSource.PlayClipAtPoint(mouseClick, transform.position);
 			Application.LoadLevel("mainMenu");
 		}
+
+		AudioSource.PlayClipAtPoint(mouseClick, transform.position);
 	}
 
 	//Mouse enter function
