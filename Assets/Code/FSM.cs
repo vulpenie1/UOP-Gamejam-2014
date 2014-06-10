@@ -11,8 +11,8 @@ using System.Collections;
 
 public class FSM : MonoBehaviour
 {
-	public Camera playerCam;
-	public Camera rockCam;
+	static public Camera playerCam;
+	static public Camera rockCam;
 
 	public enum eGameState
 	{
@@ -20,14 +20,14 @@ public class FSM : MonoBehaviour
 		eRock,
 	};
 
-    public eGameState mGameState;
+    static public eGameState mGameState;
 
 	void Start ()
 	{
 		ChangeState (eGameState.ePlayer);
 	}
 
-	public void ChangeState(eGameState state)
+	static public void ChangeState(eGameState state)
 	{
 		mGameState = state;
 

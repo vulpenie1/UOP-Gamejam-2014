@@ -12,9 +12,8 @@ using System.Collections;
 public class Rock : MonoBehaviour
 {
     public GameManager.eTeam team;
+    public Camera rockCamera;
 
-
-    float ROCK_RADIUS = 3.0f;
     Vector3 BULLSEYE_POSITION = new Vector3(10.0f, 10.0f, 10.0f);
 
 
@@ -27,5 +26,10 @@ public class Rock : MonoBehaviour
     private Vector3 GetBullseyePos()
     {
         return BULLSEYE_POSITION;
+    }
+
+    public bool InSupply()
+    {
+        return (transform.position.z < 2.0f);
     }
 }

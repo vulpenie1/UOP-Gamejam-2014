@@ -13,11 +13,21 @@ public class GameManager : MonoBehaviour {
     static Vector2 BULLSEYE_POSITION = new Vector2(10.0f, 10.0f);
     static private int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
+    public Camera playerCam;
+    public Camera rockCam;
+    private eGameState mGameState;
+    
+    public enum eGameState
+    {
+        ePlayer = 0,
+        eRock,
+    };
 
     void Awake()
     {
         Screen.lockCursor = true;
         Screen.showCursor = false;
+        ChangeState(eGameState.ePlayer);
 	}
 	
 	void Update() {	
@@ -110,6 +120,23 @@ public class GameManager : MonoBehaviour {
                     team2score += points;
                     break;
                 }
+        }
+    }
+
+    public void ChangeState(eGameState state)
+    {
+        mGameState = state;
+
+        if (state == eGameState.ePlayer)
+        {
+            playerCam.enabled = true;
+            rockCam.enabled = false;
+        }
+
+        if (state == eGameState.eRock)
+        {
+            playerCam.enabled = false;
+            rockCam.enabled = true;
         }
     }
 }

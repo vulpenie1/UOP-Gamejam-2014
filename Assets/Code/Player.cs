@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	public GameObject rock;
 	public GameManager.eTeam team;
 	public GameObject camera;
+    public Camera rockCamera;
 
 	private float speed =			0.0f;
 	private float acceleration =	0.001f;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 	private float sensitivity =		4.2f;
 	private bool canShoot =			true;
 
-	private GameObject stoneClone;
+	private Rock stoneClone;
 
 	void Start() {
 		GiveStone();
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 		// rigidbody.AddForce( direction );
 		transform.Translate( direction, Space.World );
 
-		if ( speed < MAX_SPEED ) {
+        if (speed < MAX_SPEED ) {
 			speed += acceleration;
 		}
 	}
@@ -51,26 +51,66 @@ public class Player : MonoBehaviour {
 		float dx = Input.GetAxis( "Mouse Y" ) * sensitivity;
 		transform.Rotate( 0f, -dx, 0f );
 	}
-
+    /*
 	public void GiveStone() {
 		Vector3 clonePos = transform.position;
 		clonePos.z += 1.5f;
 
 		stoneClone = (GameObject) Instantiate( rock, clonePos, Quaternion.identity );
 		stoneClone.transform.parent = transform;
-	}
+	}*/
+
+    public void GiveStone() 
+    {
+        Vector3 clonePos = transform.position;
+        clonePos.z += 1.5f;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply())
+            {
+                stoneClone = stone;
+                stone.transform.position = clonePos;
+                stoneClone.transform.parent = transform;
+                rockCamera.transform.parent = stoneClone.transform;
+                break;
+            }
+        }
+        
+    }
 
 	public void ShootStone() {
 		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
 			canShoot = false;
 
 			stoneClone.transform.parent = null;
-			camera.transform.parent = stoneClone.transform;
-
+			//camera.transform.parent = stoneClone.transform;
+            GameManager.Singleton().ChangeState(GameManager.eGameState.eRock);
+            
 			Vector3 forwardForce = transform.forward;
 			forwardForce *= ( shootSpeed * shootSpeed );
 
 			stoneClone.rigidbody.AddForce( forwardForce );
+
+            if (StonesInSupply() > 0)
+            {
+                GiveStone();
+            }
 		}
 	}
+
+    private int StonesInSupply()
+    {
+        int i = 0;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply())
+            {
+                i++;
+            }
+        }
+
+        return i;
+    }
 }
