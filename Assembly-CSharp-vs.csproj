@@ -46,10 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
      <Compile Include="Assets\Code\menuItemOutline.cs" />
      <Compile Include="Assets\Code\menuScript.cs" />
+     <None Include="Assets\Sounds\hi.txt" />
+     <None Include="Assets\Models\hi.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
