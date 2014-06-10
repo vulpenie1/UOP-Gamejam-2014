@@ -14,8 +14,14 @@ public class Rock : MonoBehaviour
     public GameManager.eTeam team;
     public Camera rockCamera;
 
+    private bool inSupply;
+
     Vector3 BULLSEYE_POSITION = new Vector3(10.0f, 10.0f, 10.0f);
 
+    void Start()
+    {
+        inSupply = true;
+    }
 
     public float DistanceFromBullseye()
     {
@@ -28,8 +34,13 @@ public class Rock : MonoBehaviour
         return BULLSEYE_POSITION;
     }
 
+    public void Fire()
+    {
+        inSupply = false;
+    }
+
     public bool InSupply()
     {
-        return (transform.position.z < 2.0f);
+        return inSupply;
     }
 }

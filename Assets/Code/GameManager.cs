@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update() {	
+
 	}
 
 	public enum eTeam {
@@ -48,14 +49,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 
-    static void UpdateScores()
+    private void UpdateScores()
     {
         eTeam winningTeam = GetRoundWinner();
         float nmeDistanceFromBullseye = GetNMEClosestToBullseye(winningTeam);
         GivePoints(winningTeam, nmeDistanceFromBullseye);
     }
 
-    static eTeam GetRoundWinner()
+    private eTeam GetRoundWinner()
     {
         eTeam winningTeam = 0;
         float winningDistance = 99999.9f;
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour {
         return winningTeam;
     }
 
-    static float GetNMEClosestToBullseye(eTeam winningTeam)
+    private float GetNMEClosestToBullseye(eTeam winningTeam)
     {
         float closestToBullseye = 99999.9f;
         foreach (Rock rock in FindObjectsOfType<Rock>())
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour {
         return closestToBullseye;
     }
 
-    static private void GivePoints(eTeam winningTeam, float nmeDistanceFromBullseye)
+    private void GivePoints(eTeam winningTeam, float nmeDistanceFromBullseye)
     {
         int points = 0;
 
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour {
         GiveWinningTeamPoints(winningTeam, points);
     }
 
-    static private void GiveWinningTeamPoints(eTeam team, int points)
+    private void GiveWinningTeamPoints(eTeam team, int points)
     {
         switch (team)
         {
@@ -138,5 +139,10 @@ public class GameManager : MonoBehaviour {
             playerCam.enabled = false;
             rockCam.enabled = true;
         }
+    }
+
+    public eGameState GetState()
+    {
+        return mGameState;
     }
 }
