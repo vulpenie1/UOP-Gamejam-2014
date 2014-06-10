@@ -14,6 +14,8 @@ public class menuScript : MonoBehaviour {
 			PlayerPrefs.Save();
 			Debug.Log ("Volume was reset");
 		}
+
+		audio.volume = PlayerPrefs.GetFloat ("volume");
 	}
 	
 	// Update is called once per frame
