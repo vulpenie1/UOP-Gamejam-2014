@@ -21,7 +21,6 @@ public class optionsMenu : MonoBehaviour {
 
 		PlayerPrefs.SetFloat ( "volume", ( newVolume / 100 ) );//badly inefficiant
 		PlayerPrefs.Save ();
-		audio.volume = newVolume;
 
 		GUI.Label( new Rect( ( Screen.width / 2 ) - 50, ( Screen.height / 2 ) - 25 , 300, 25 ), "Volume: " + newVolume);
 
