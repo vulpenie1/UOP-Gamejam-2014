@@ -5,3 +5,8 @@
 # FOLDERS
 /Library/*
 /Build/*
+
+# FILES
+*.csproj
+*.sln
+*.userprefs
