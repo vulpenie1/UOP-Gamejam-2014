@@ -89,22 +89,12 @@ public class Player : MonoBehaviour {
 
 	public void ShootStone() {
 		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
-<<<<<<< HEAD
 			canShoot =						false;
 			canControl =					false;
 			stoneClone.transform.parent =	null;
 			camera.transform.parent =		stoneClone.transform;
 			Vector3 forwardForce =			transform.forward;
 			
-=======
-			canShoot = false;
-
-			stoneClone.transform.parent = null;
-			//camera.transform.parent = stoneClone.transform;
-            SwitchCamera(GameManager.eGameState.eRock);
-            
-			Vector3 forwardForce = transform.forward;
->>>>>>> 8feae076e7ebd5b96006d73b2bd140e045447936
 			forwardForce *= ( shootSpeed * shootSpeed );
 			stoneClone.rigidbody.AddForce( forwardForce );
             stoneClone.Fire();
