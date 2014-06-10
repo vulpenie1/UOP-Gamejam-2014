@@ -28,6 +28,11 @@ public class Player : MonoBehaviour {
 		// if ( speed > 0 ) {
 		// 	speed -= acceleration;
 		// }
+
+		if ( camera.transform.parent == transform ) {
+			camera.transform.position =	new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+			camera.transform.rotation =	Quaternion.Euler( 30f, -90f, 0f );
+		}
 	}
 
 	public void Move() {
@@ -51,8 +56,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public void Look() {
-		float dx = Input.GetAxis( "Mouse Y" ) * sensitivity;
-		transform.Rotate( 0f, -dx, 0f );
+		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;
+		transform.Rotate( 0f, -dy, 0f );
 	}
 
 	public void GiveStone() {
@@ -65,17 +70,14 @@ public class Player : MonoBehaviour {
 
 	public void ShootStone() {
 		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
-			canShoot = false;
+			canShoot =						false;
+			canControl =					false;
+			stoneClone.transform.parent =	null;
+			camera.transform.parent =		stoneClone.transform;
+			Vector3 forwardForce =			transform.forward;
 
-			stoneClone.transform.parent = null;
-			camera.transform.parent = stoneClone.transform;
-
-			Vector3 forwardForce = transform.forward;
 			forwardForce *= ( shootSpeed * shootSpeed );
-
 			stoneClone.rigidbody.AddForce( forwardForce );
-
-			canControl = false;
 		}
 	}
 }
