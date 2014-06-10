@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\menuScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\menuItemOutline.cs">
     <Files>
-      <File FileName="Assets\menuScript.cs" Line="6" Column="20" />
+      <File FileName="Assets\Code\menuItemOutline.cs" Line="26" Column="1" />
+      <File FileName="Assets\Code\menuScript.cs" Line="51" Column="3" />
+      <File FileName="Assets\Code\menuItemOutline.cs" Line="23" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
