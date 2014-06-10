@@ -7,11 +7,12 @@ public class Player : MonoBehaviour {
 	public GameObject camera;
 
 	private float speed =			0.0f;
-	private float acceleration =	0.001f;
+	private float acceleration =	0.0005f;
 	private const float MAX_SPEED =	50.0f;
 	private float shootSpeed =		25.0f;
 	private float sensitivity =		4.2f;
 	private bool canShoot =			true;
+	private bool canControl =		true;
 
 	private GameObject stoneClone;
 
@@ -24,26 +25,28 @@ public class Player : MonoBehaviour {
 		Look();
 		ShootStone();
 
-		if ( speed > 0 ) {
-			speed -= acceleration;
-		}
+		// if ( speed > 0 ) {
+		// 	speed -= acceleration;
+		// }
 	}
 
 	public void Move() {
-		float dx =				Input.GetAxis( "Horizontal" ) * speed;
-		float dz =				Input.GetAxis( "Vertical" ) * speed;
+		if ( canControl ) {
+			float dx =				Input.GetAxis( "Horizontal" ) * speed;
+			float dz =				Input.GetAxis( "Vertical" ) * speed;
 
-		dx =					Mathf.Clamp( dx, -speed, speed );
-		dz =					Mathf.Clamp( dz, -speed, speed );
+			dx =					Mathf.Clamp( dx, -speed, speed );
+			dz =					Mathf.Clamp( dz, -speed, speed );
 
-		Vector3 direction =		new Vector3( dx, 0f, dz );
-		direction =				transform.TransformDirection( direction );
+			Vector3 direction =		new Vector3( dx, 0f, dz );
+			direction =				transform.TransformDirection( direction );
 
-		// rigidbody.AddForce( direction );
-		transform.Translate( direction, Space.World );
+			// rigidbody.AddForce( direction );
+			transform.Translate( direction, Space.World );
 
-		if ( speed < MAX_SPEED ) {
-			speed += acceleration;
+			if ( speed < MAX_SPEED ) {
+				speed += acceleration;
+			}
 		}
 	}
 
@@ -71,6 +74,8 @@ public class Player : MonoBehaviour {
 			forwardForce *= ( shootSpeed * shootSpeed );
 
 			stoneClone.rigidbody.AddForce( forwardForce );
+
+			canControl = false;
 		}
 	}
 }
