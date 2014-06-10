@@ -18,16 +18,30 @@ public class Rock : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () 
-	{
-		speed = 0.1f;
+	void Start ()
+    {/*
+        if (velocity.x == 0)
+        {
+            velocity.x = 0.0f;
+        }
+
+        if (velocity.y == 0)
+        {
+            velocity.y = 0.0f;
+        }
+
+		speed = 0.01f;*/
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		transform.position += (Vector3)(velocity * speed * Time.deltaTime);
-		CollisionCheck();
+//      Vector3 movement;
+
+//      movement = new Vector3(velocity.x * speed, 0.0f, velocity.y * speed);
+        
+//		transform.Translate(movement);
+//		CollisionCheck();
 	}
 		
 	void HitBy(Rock col)
@@ -51,9 +65,9 @@ public class Rock : MonoBehaviour {
 	
 	bool IsTouching(Rock otherRock)
 	{
-		float distance = (otherRock.velocity - velocity).magnitude;
+		float distance = (otherRock.transform.position - transform.position).magnitude;
 		
-		return (distance >= (ROCK_RADIUS * 2.0f));
+		return (distance <= (ROCK_RADIUS * 2.0f));
 	}
 
 	Vector2 GetBullseyePos()

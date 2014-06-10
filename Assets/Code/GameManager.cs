@@ -2,13 +2,15 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+	public GameObject stonesDeposit;
+
 	void Awake() {
 	}
 	
 	void Update() {	
 	}
 
-	enum eTeam {
+	public enum eTeam {
 		TEAM_1,
 		TEAM_2
 	}
