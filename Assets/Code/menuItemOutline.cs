@@ -22,4 +22,10 @@ public class menuItemOutline : MonoBehaviour {
 		Debug.Log("Test");
 		outline.renderer.enabled = true;
 	}
+
+	void OnMouseLeave()
+	{
+		Debug.Log("Test");
+		outline.renderer.enabled = true;
+	}
 }
