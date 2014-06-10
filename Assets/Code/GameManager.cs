@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+	public GameObject stonesDeposit;
+
 	void Awake() {
 	}
 	

@@ -6,20 +6,27 @@ public class Player : MonoBehaviour {
 	public GameManager.eTeam team;
 	public GameObject camera;
 
-	private float speed =		50.0f;
-	private float shootSpeed =	18.0f;
-	private float sensitivity =	4.2f;
+	private float speed =			0.0f;
+	private float acceleration =	0.001f;
+	private const float MAX_SPEED =	50.0f;
+	private float shootSpeed =		25.0f;
+	private float sensitivity =		4.2f;
+	private bool canShoot =			true;
 
-	private bool canShoot =		true;
+	private GameObject stoneClone;
 
 	void Start() {
-		rock.transform.parent = transform;
+		GiveStone();
 	}
 
 	void Update() {
 		Move();
 		Look();
-		ShootRock();
+		ShootStone();
+
+		if ( speed > 0 ) {
+			speed -= acceleration;
+		}
 	}
 
 	public void Move() {
@@ -32,7 +39,12 @@ public class Player : MonoBehaviour {
 		Vector3 direction =		new Vector3( dx, 0f, dz );
 		direction =				transform.TransformDirection( direction );
 
-		rigidbody.AddForce( direction );
+		// rigidbody.AddForce( direction );
+		transform.Translate( direction, Space.World );
+
+		if ( speed < MAX_SPEED ) {
+			speed += acceleration;
+		}
 	}
 
 	public void Look() {
@@ -40,17 +52,25 @@ public class Player : MonoBehaviour {
 		transform.Rotate( 0f, -dx, 0f );
 	}
 
-	public void ShootRock() {
+	public void GiveStone() {
+		Vector3 clonePos = transform.position;
+		clonePos.z += 1.5f;
+
+		stoneClone = (GameObject) Instantiate( rock, clonePos, Quaternion.identity );
+		stoneClone.transform.parent = transform;
+	}
+
+	public void ShootStone() {
 		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
 			canShoot = false;
 
-			rock.transform.parent = null;
-			camera.transform.parent = rock.transform;
+			stoneClone.transform.parent = null;
+			camera.transform.parent = stoneClone.transform;
 
 			Vector3 forwardForce = transform.forward;
-			forwardForce *= ( speed * shootSpeed );
+			forwardForce *= ( shootSpeed * shootSpeed );
 
-			rock.rigidbody.AddForce( forwardForce );
+			stoneClone.rigidbody.AddForce( forwardForce );
 		}
 	}
 }
