@@ -90,9 +90,10 @@ public class Player : MonoBehaviour {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
 				stone.transform.position =		clonePos;
-				stoneClone.transform.parent =	transform;
+				//stoneClone.transform.parent =	transform;
 				rockCamera.transform.parent =	stoneClone.transform;
                 ResetRockCamera();
+                stone.Pickup();
                 found = true;
 				break;
 			}
@@ -108,19 +109,20 @@ public class Player : MonoBehaviour {
 
 	public void ShootStone() {
 		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
-			canShoot =						false;
-			canControl =					false;
-			stoneClone.transform.parent =	null;
-			//camera.transform.parent =		stoneClone.transform;
-			Vector3 forwardForce =			transform.forward;
-            
+            stoneClone.transform.parent =   null;
+
             SwitchCamera(GameManager.eGameState.eRock);
 			
-			forwardForce *= ( shootSpeed * shootSpeed );
-			stoneClone.rigidbody.AddForce( forwardForce );
-			stoneClone.Fire();
+            //Vector3 forwardForce =			transform.forward;
+            //forwardForce *= ( shootSpeed * shootSpeed );
+			//stoneClone.rigidbody.velocity = rigidbody.velocity;
 
-			StartCoroutine( StoneFired() );      
+            stoneClone.Fire();
+            canShoot = false;
+            canControl = false;
+
+            // must be at the end
+            StartCoroutine( StoneFired() );      
 		}
 	}
 
