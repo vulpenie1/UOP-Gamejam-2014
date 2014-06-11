@@ -69,6 +69,9 @@ public class GameManager : MonoBehaviour {
         eTeam winningTeam = GetRoundWinner();
         float nmeDistanceFromBullseye = GetNMEClosestToBullseye( winningTeam );
         GivePoints( winningTeam, nmeDistanceFromBullseye );
+        print(winningTeam);
+        print(team1score);
+        print(team2score);
     }
 
     private eTeam GetRoundWinner() {
@@ -141,7 +144,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public eGameState GetState() {
+    public eGameState getState() {
         return mGameState;
     }
 
@@ -160,4 +163,9 @@ public class GameManager : MonoBehaviour {
 		int[] scores = {team1score, team2score};
 		return scores;
 	}
+
+    public static bool IsTeamOne()
+    {
+        return (FindObjectOfType<Player>().team == eTeam.TEAM_1);
+    }
 }

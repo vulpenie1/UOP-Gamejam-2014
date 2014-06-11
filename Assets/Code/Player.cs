@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3(30.0f, 0.0f, 0.0f);
 
 	void Start() {
-		cameraToPlayerOffset =	new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+		cameraToPlayerOffset = new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
 
 		GiveStone();
 	}
@@ -90,9 +90,10 @@ public class Player : MonoBehaviour {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
 				stone.transform.position =		clonePos;
-				stoneClone.transform.parent =	transform;
+				//stoneClone.transform.parent =	transform;
 				rockCamera.transform.parent =	stoneClone.transform;
                 ResetRockCamera();
+                stone.Pickup();
                 found = true;
 				break;
 			}
@@ -101,6 +102,7 @@ public class Player : MonoBehaviour {
         if (found) {
             canControl = true;
         } else {
+            // in case there are stones left and the current player is not on the same team as the last stones
             SwitchTeam();
             GiveStone();
         }
@@ -108,19 +110,20 @@ public class Player : MonoBehaviour {
 
 	public void ShootStone() {
 		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
-			canShoot =						false;
-			canControl =					false;
-			stoneClone.transform.parent =	null;
-			//camera.transform.parent =		stoneClone.transform;
-			Vector3 forwardForce =			transform.forward;
-            
+            stoneClone.transform.parent =   null;
+
             SwitchCamera(GameManager.eGameState.eRock);
 			
-			forwardForce *= ( shootSpeed * shootSpeed );
-			stoneClone.rigidbody.AddForce( forwardForce );
-			stoneClone.Fire();
+            //Vector3 forwardForce =			transform.forward;
+            //forwardForce *= ( shootSpeed * shootSpeed );
+			//stoneClone.rigidbody.velocity = rigidbody.velocity;
 
-			StartCoroutine( StoneFired() );      
+            stoneClone.Fire();
+            canShoot = false;
+            canControl = false;
+
+            // must be at the end
+            StartCoroutine( StoneFired() );      
 		}
 	}
 
@@ -136,19 +139,56 @@ public class Player : MonoBehaviour {
         SwitchCamera(GameManager.eGameState.ePlayer);
     }
 
-	private int StonesInSupply() {
-		int i = 0;
+    private int StonesInSupply()
+    {
+        int i = 0;
 
-		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
-			if ( stone.InSupply() ) {
-				i++;
-			}
-		}
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply())
+            {
+                i++;
+            }
+        }
 
-		print( i );
+        print(i);
 
-		return i;
-	}
+        return i;
+    }
+
+    private int TeamOneStonesLeft()
+    {
+        int i = 0;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1)
+            {
+                i++;
+            }
+        }
+
+        print(i);
+
+        return i;
+    }
+
+    private int TeamTwoStonesInSupply()
+    {
+        int i = 0;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2)
+            {
+                i++;
+            }
+        }
+
+        print(i);
+
+        return i;
+    }
 
 	private void SwitchCamera( GameManager.eGameState state ) {
 		GameManager.Singleton().ChangeState( state );

@@ -11,6 +11,7 @@ using System.Collections;
 
 public class Rock : MonoBehaviour
 {
+    private Player player;
     public GameManager.eTeam team;
     public Camera rockCamera;
 
@@ -21,6 +22,15 @@ public class Rock : MonoBehaviour
     void Start()
     {
         inSupply = true;
+        player = FindObjectOfType<Player>();
+    }
+
+    void Update()
+    {
+        if (!InSupply())
+        {
+            transform.position = player.transform.position + new Vector3(0f, 0f, 1.5f);
+        }
     }
 
     public float DistanceFromBullseye()
@@ -34,9 +44,14 @@ public class Rock : MonoBehaviour
         return BULLSEYE_POSITION;
     }
 
-    public void Fire()
+    public void Pickup()
     {
         inSupply = false;
+    }
+
+    public void Fire()
+    {
+        rigidbody.velocity = player.rigidbody.velocity;
     }
 
     public bool InSupply()
