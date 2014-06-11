@@ -10,7 +10,7 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	public static float volume = PlayerPrefs.GetFloat ( "volume" );
+	public static float volume;
     static Vector2 BULLSEYE_POSITION = new Vector2( 10.0f, 10.0f );
     private static int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
