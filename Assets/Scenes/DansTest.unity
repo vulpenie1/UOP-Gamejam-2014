@@ -2353,7 +2353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
