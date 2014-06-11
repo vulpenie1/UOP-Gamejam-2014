@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3(30.0f, 0.0f, 0.0f);
 
 	void Start() {
-		cameraToPlayerOffset =	new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+		cameraToPlayerOffset = new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
 
 		GiveStone();
 	}
