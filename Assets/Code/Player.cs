@@ -102,6 +102,7 @@ public class Player : MonoBehaviour {
         if (found) {
             canControl = true;
         } else {
+            // in case there are stones left and the current player is not on the same team as the last stones
             SwitchTeam();
             GiveStone();
         }
@@ -138,19 +139,56 @@ public class Player : MonoBehaviour {
         SwitchCamera(GameManager.eGameState.ePlayer);
     }
 
-	private int StonesInSupply() {
-		int i = 0;
+    private int StonesInSupply()
+    {
+        int i = 0;
 
-		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
-			if ( stone.InSupply() ) {
-				i++;
-			}
-		}
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply())
+            {
+                i++;
+            }
+        }
 
-		print( i );
+        print(i);
 
-		return i;
-	}
+        return i;
+    }
+
+    private int TeamOneStonesLeft()
+    {
+        int i = 0;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1)
+            {
+                i++;
+            }
+        }
+
+        print(i);
+
+        return i;
+    }
+
+    private int TeamTwoStonesInSupply()
+    {
+        int i = 0;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2)
+            {
+                i++;
+            }
+        }
+
+        print(i);
+
+        return i;
+    }
 
 	private void SwitchCamera( GameManager.eGameState state ) {
 		GameManager.Singleton().ChangeState( state );
