@@ -56,24 +56,12 @@
      <Compile Include="Assets\Code\optionsMenu.cs" />
      <None Include="Assets\Models\hi.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
-<<<<<<< HEAD
-<<<<<<< HEAD
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
-=======
- <HintPath>F:/CODING/Portsmouth GameJam 2014/New/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
->>>>>>> 9befb9bfe390ce20c4f13f8b807c3d53004f20b9
-=======
- <HintPath>C:/Users/Hybrid-Laptop/Documents/GitHub/UOP-Gamejam-2014/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
->>>>>>> 28935a22aa43b30aafceac9626825a9758409c76
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-<<<<<<< HEAD
-      <Project>{2A8E7E59-0B2D-943B-6FAF-FF5F0BF23986}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
-=======
       <Project>{338E8936-C545-2C23-64C3-550797224E64}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
->>>>>>> 28935a22aa43b30aafceac9626825a9758409c76
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
