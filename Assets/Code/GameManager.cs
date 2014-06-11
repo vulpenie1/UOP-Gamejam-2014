@@ -168,4 +168,39 @@ public class GameManager : MonoBehaviour {
     {
         return (FindObjectOfType<Player>().team == eTeam.TEAM_1);
     }
+
+
+    public static int TeamOneStonesLeft()
+    {
+        int i = 0;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1)
+            {
+                i++;
+            }
+        }
+
+        print(i);
+
+        return i;
+    }
+
+    public static int TeamTwoStonesLeft()
+    {
+        int i = 0;
+
+        foreach (Rock stone in FindObjectsOfType<Rock>())
+        {
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2)
+            {
+                i++;
+            }
+        }
+
+        print(i);
+
+        return i;
+    }
 }

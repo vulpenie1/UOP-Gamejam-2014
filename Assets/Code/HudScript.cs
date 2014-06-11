@@ -9,11 +9,14 @@ public class HudScript : MonoBehaviour {
 	public GameObject score2;
 	public GameObject currentTeam;
 
+	public Texture2D redStones;
+	public Texture2D blueStones;
+
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -23,6 +26,7 @@ public class HudScript : MonoBehaviour {
 	void OnGUI() {
 		UpdateScores ();
 		UpdateCurrentPlayer ();
+		UpdateStoneCounter ();
 
 	}
 
@@ -34,12 +38,29 @@ public class HudScript : MonoBehaviour {
 	}
 
 	//A function that updates the display for the current team
-	// --------- Change this when I have pulled the latest repo ----------
 	private void UpdateCurrentPlayer() {
-		//currentTeam = GameManager.IsTeamOne();
-		currentTeam.guiText.text = "Team 1's turn";
+		if (GameManager.IsTeamOne ()) {
+			currentTeam.guiText.text = "Team 1's turn";
+		} 
+		else {
+			currentTeam.guiText.text = "Team 2's turn";
+		}
+	}
 
+	void Draw() {
+		for (int i = GameManager.TeamOneStonesLeft(); i > 0; i--) {
+			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 40, ( Screen.height / 2 ) - 25 , 300, 25 ), redStones);
+			
+		}
+	}
 
+	private void UpdateStoneCounter() {
+
+		//Draw stones for team one
+		for (int i = GameManager.TeamOneStonesLeft(); i > 0; i--) {
+			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 40, ( Screen.height / 2 ) - 25 , 300, 25 ), redStones);
+
+		}
 	}
 	
 }
