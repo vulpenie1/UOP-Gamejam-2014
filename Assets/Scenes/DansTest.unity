@@ -855,7 +855,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &392285832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2490,6 +2490,58 @@ Transform:
   - {fileID: 1583544966}
   m_Father: {fileID: 1569564153}
   m_RootOrder: 0
+--- !u!1 &1245059666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1245059667}
+  - 132: {fileID: 1245059668}
+  m_Layer: 0
+  m_Name: Team2Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1245059667
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1245059666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0500000007, y: .949999988, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1539387709}
+  m_RootOrder: 2
+--- !u!132 &1245059668
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13200002, guid: bf885454931346546b7e5f55f141d341,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1245059666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Team 2
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 23
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4291998083
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1295420637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +2993,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1488069796}
   - 114: {fileID: 1488069795}
+  - 114: {fileID: 1488069797}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2973,7 +3026,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
+--- !u!114 &1488069797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1488069794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d4242eb99fe60478505582eb1ed868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score1: {fileID: 1866312675}
+  score2: {fileID: 1245059666}
+  currentTeam: {fileID: 1516999364}
+  redStones: {fileID: 2800000, guid: e580ba61bf3d4bc47a5d32e0f5c721ec, type: 3}
+  blueStones: {fileID: 2800000, guid: 8927b5d7ae25d194388676538e1ce06a, type: 3}
 --- !u!1 &1500712618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,6 +3217,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1452085839}
   m_RootOrder: 4
+--- !u!1 &1516999364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1516999365}
+  - 132: {fileID: 1516999366}
+  m_Layer: 0
+  m_Name: CurrentTeam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516999365
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516999364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .444999993, y: .839999974, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1539387709}
+  m_RootOrder: 0
+--- !u!132 &1516999366
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13200004, guid: bf885454931346546b7e5f55f141d341,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516999364}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Current Team
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 23
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279374584
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1524604857
 GameObject:
   m_ObjectHideFlags: 0
@@ -3175,6 +3296,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 971318919}
   m_RootOrder: 0
+--- !u!1 &1539387708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1539387709}
+  m_Layer: 0
+  m_Name: HUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1539387709
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1539387708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1516999365}
+  - {fileID: 1866312676}
+  - {fileID: 1245059667}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &1542263583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3424,7 +3575,7 @@ Transform:
   m_Children:
   - {fileID: 459054687}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!54 &1591450709
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3749,6 +3900,58 @@ Prefab:
   m_RootGameObject: {fileID: 1452085838}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1866312675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1866312676}
+  - 132: {fileID: 1866312677}
+  m_Layer: 0
+  m_Name: Team1Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1866312676
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1866312675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0500000007, y: 1, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1539387709}
+  m_RootOrder: 1
+--- !u!132 &1866312677
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13200000, guid: bf885454931346546b7e5f55f141d341,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1866312675}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Team 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 23
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278914047
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1880812675
 GameObject:
   m_ObjectHideFlags: 0
