@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
 		return gm;
 	}
 
-    private void UpdateScores() {
+    public void UpdateScores() {
         eTeam winningTeam = GetRoundWinner();
         float nmeDistanceFromBullseye = GetNMEClosestToBullseye( winningTeam );
         GivePoints( winningTeam, nmeDistanceFromBullseye );
@@ -153,5 +153,11 @@ public class GameManager : MonoBehaviour {
 		volume = newVolume / 100;
 		PlayerPrefs.SetFloat( "volume", volume );
 		PlayerPrefs.Save();
+	}
+
+	public static int[] getScore()
+	{
+		int[] scores = {team1score, team2score};
+		return scores;
 	}
 }

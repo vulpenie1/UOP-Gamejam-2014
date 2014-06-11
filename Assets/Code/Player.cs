@@ -77,25 +77,29 @@ public class Player : MonoBehaviour {
 		transform.Rotate( 0f, -dy, 0f );
 	}
 
-    public void GiveStone() 
-    {
+    public void GiveStone() {
+        bool found = false;
+        transform.rotation = Quaternion.identity;
         Vector3 clonePos = transform.position;
         clonePos.z += 1.5f;
-
-		foreach ( Rock stone in FindObjectsOfType<Rock>() )
-		{
-			if ( stone.InSupply() && stone.team == team )
-			{
+		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
+			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
 				stone.transform.position =		clonePos;
 				stoneClone.transform.parent =	transform;
 				rockCamera.transform.parent =	stoneClone.transform;
                 ResetRockCamera();
+                found = true;
 				break;
 			}
 		}
 
-		canControl = true;
+        if (found) {
+            canControl = true;
+        } else {
+            SwitchTeam();
+            GiveStone();
+        }
 	}
 
 	public void ShootStone() {
@@ -103,11 +107,10 @@ public class Player : MonoBehaviour {
 			canShoot =						false;
 			canControl =					false;
 			stoneClone.transform.parent =	null;
-			camera.transform.parent =		stoneClone.transform;
+			//camera.transform.parent =		stoneClone.transform;
 			Vector3 forwardForce =			transform.forward;
             
             SwitchCamera(GameManager.eGameState.eRock);
-            SwitchTeam();
 			
 			forwardForce *= ( shootSpeed * shootSpeed );
 			stoneClone.rigidbody.AddForce( forwardForce );
@@ -117,25 +120,23 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-    private IEnumerator StoneFired()
-    {
+    private IEnumerator StoneFired() {
         yield return new WaitForSeconds(3);
-        if (StonesInSupply() > 0)
-        {
+        if (StonesInSupply() > 0) {
+            SwitchTeam();
             GiveStone();
-            SwitchCamera(GameManager.eGameState.ePlayer);
             canShoot = true;
+        } else {
+            EndOfRound();
         }
+        SwitchCamera(GameManager.eGameState.ePlayer);
     }
 
-	private int StonesInSupply()
-	{
+	private int StonesInSupply() {
 		int i = 0;
 
-		foreach ( Rock stone in FindObjectsOfType<Rock>() )
-		{
-			if ( stone.InSupply() )
-			{
+		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
+			if ( stone.InSupply() ) {
 				i++;
 			}
 		}
@@ -145,15 +146,12 @@ public class Player : MonoBehaviour {
 		return i;
 	}
 
-	private void SwitchCamera( GameManager.eGameState state )
-	{
+	private void SwitchCamera( GameManager.eGameState state ) {
 		GameManager.Singleton().ChangeState( state );
     }
 
-    private void SwitchTeam()
-    {
-        switch (team)
-        {
+    private void SwitchTeam() {
+        switch (team) {
             case GameManager.eTeam.TEAM_1:
                 {
                     team = GameManager.eTeam.TEAM_2;
@@ -167,9 +165,13 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void ResetRockCamera()
-    {
+    private void ResetRockCamera() {
         rockCamera.transform.position = ROCK_CAMERA_DEFAULT_POSITION;
         rockCamera.transform.rotation = Quaternion.Euler(ROCK_CAMERA_DEFAULT_ROTATION);
+    }
+
+    private void EndOfRound() {
+        GameManager.Singleton().UpdateScores();
+        //reset game or load a scene to show the winner
     }
 }
