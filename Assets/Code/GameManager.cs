@@ -1,7 +1,7 @@
 ﻿/*
 	File:			GameManager.cs
 	Author:			Krz, Dan
-	Project:		Curling Game
+	Project:		Geri-Lynn Ramsey's Xtreme Curling 2014
 	Soundtrack:		Station 90 Show 13: Simon Heartfield and Manni Dee
 	Description:	Manages the state of the game.
 */
