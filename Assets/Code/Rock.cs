@@ -1,4 +1,4 @@
-﻿/*
+/*
 	File:			Rock.cs
 	Author:			Krz
 	Project:		Curling Game
