@@ -154,4 +154,10 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.SetFloat( "volume", volume );
 		PlayerPrefs.Save();
 	}
+
+	public static int[] getScore()
+	{
+		int[] scores = {team1score, team2score};
+		return scores;
+	}
 }
