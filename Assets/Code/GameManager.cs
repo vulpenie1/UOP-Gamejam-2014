@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public eGameState GetState() {
+    public eGameState getState() {
         return mGameState;
     }
 
@@ -163,4 +163,9 @@ public class GameManager : MonoBehaviour {
 		int[] scores = {team1score, team2score};
 		return scores;
 	}
+
+    public static bool IsTeamOne()
+    {
+        return (FindObjectOfType<Player>().team == eTeam.TEAM_1);
+    }
 }
