@@ -49,7 +49,6 @@
      <Compile Include="Assets\Code\AnimTest.cs" />
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
-     <Compile Include="Assets\Code\MouseTest.cs" />
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
@@ -57,11 +56,7 @@
      <Compile Include="Assets\Code\optionsMenu.cs" />
      <None Include="Assets\Models\hi.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
-<<<<<<< HEAD
- <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
-=======
  <HintPath>C:/Users/Hybrid-Laptop/Documents/GitHub/UOP-Gamejam-2014/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
->>>>>>> be75513ab713d31e483f447f7a4d97f6c4564ece
  </Reference>
   </ItemGroup>
   <ItemGroup>

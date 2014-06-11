@@ -27,7 +27,6 @@ public class HudScript : MonoBehaviour {
 		UpdateScores ();
 		UpdateCurrentPlayer ();
 		UpdateStoneCounter ();
-
 	}
 
 	//A function that updates the display for teams current scores
@@ -41,25 +40,28 @@ public class HudScript : MonoBehaviour {
 	private void UpdateCurrentPlayer() {
 		if (GameManager.IsTeamOne ()) {
 			currentTeam.guiText.text = "Team 1's turn";
+			currentTeam.guiText.material.color = new Color32( 248, 18, 18, 255 );
 		} 
 		else {
 			currentTeam.guiText.text = "Team 2's turn";
-		}
-	}
-
-	void Draw() {
-		for (int i = GameManager.TeamOneStonesLeft(); i > 0; i--) {
-			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 40, ( Screen.height / 2 ) - 25 , 300, 25 ), redStones);
-			
+			currentTeam.guiText.material.color = new Color32( 131, 177, 210, 255 );
 		}
 	}
 
 	private void UpdateStoneCounter() {
 
+		int redOffset = 40;
+		int blueOffset = 40;
+
 		//Draw stones for team one
 		for (int i = GameManager.TeamOneStonesLeft(); i > 0; i--) {
-			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 40, ( Screen.height / 2 ) - 25 , 300, 25 ), redStones);
+			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 100 + redOffset, ( Screen.height / 2 ) - 260, 32, 32 ), redStones);
+			redOffset += 40;
+		}
 
+		for (int i = GameManager.TeamOneStonesLeft(); i > 0; i--) {
+			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 100 + blueOffset, ( Screen.height / 2 ) - 220, 32, 32 ), blueStones);
+			blueOffset += 40;
 		}
 	}
 	
