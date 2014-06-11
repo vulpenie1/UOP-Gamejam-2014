@@ -10,44 +10,33 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-<<<<<<< HEAD
-    static Vector2 BULLSEYE_POSITION = new Vector2(10.0f, 10.0f);
-    static private int team1score = 0, team2score = 0;
+	public static float volume = PlayerPrefs.GetFloat ( "volume" );
+    static Vector2 BULLSEYE_POSITION = new Vector2( 10.0f, 10.0f );
+    private static int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
     public Camera playerCam;
     public Camera rockCam;
     private eGameState mGameState;
     
-    public enum eGameState
-    {
+    public enum eGameState {
         ePlayer = 0,
         eRock,
-    };
+    }
 
     void Awake()
     {
         Screen.lockCursor = true;
         Screen.showCursor = false;
-        ChangeState(eGameState.ePlayer);
-	}
-	
-	void Update() {	
+        ChangeState( eGameState.ePlayer );
 
-=======
-	public GameObject stonesDeposit;
-	public static float volume = PlayerPrefs.GetFloat ("volume");
-
-	void Awake() {
-		volume = PlayerPrefs.GetFloat ("volume");
+        volume = PlayerPrefs.GetFloat( "volume" );
 		//volume = 1.0f;
 	}
 	
 	void Update() {	
-		if ( Input.GetKeyUp( KeyCode.Escape ) )
-		{
-			Application.LoadLevel("mainMenu");
+		if ( Input.GetKeyUp( KeyCode.Escape ) ) {
+			Application.LoadLevel( "mainMenu" );
 		}
->>>>>>> 6595167e78463383562485b933ee1b948a86c512
 	}
 
 	public enum eTeam {
@@ -64,24 +53,18 @@ public class GameManager : MonoBehaviour {
 		return gm;
 	}
 
-<<<<<<< HEAD
-
-    private void UpdateScores()
-    {
+    private void UpdateScores() {
         eTeam winningTeam = GetRoundWinner();
-        float nmeDistanceFromBullseye = GetNMEClosestToBullseye(winningTeam);
-        GivePoints(winningTeam, nmeDistanceFromBullseye);
+        float nmeDistanceFromBullseye = GetNMEClosestToBullseye( winningTeam );
+        GivePoints( winningTeam, nmeDistanceFromBullseye );
     }
 
-    private eTeam GetRoundWinner()
-    {
+    private eTeam GetRoundWinner() {
         eTeam winningTeam = 0;
         float winningDistance = 99999.9f;
 
-        foreach (Rock rock in FindObjectsOfType<Rock>())
-        {
-            if (rock.DistanceFromBullseye() < winningDistance)
-            {
+        foreach ( Rock rock in FindObjectsOfType<Rock>() ) {
+            if ( rock.DistanceFromBullseye() < winningDistance ) {
                 winningTeam = rock.team;
                 winningDistance = rock.DistanceFromBullseye();
             }
@@ -90,16 +73,12 @@ public class GameManager : MonoBehaviour {
         return winningTeam;
     }
 
-    private float GetNMEClosestToBullseye(eTeam winningTeam)
-    {
+    private float GetNMEClosestToBullseye( eTeam winningTeam ) {
         float closestToBullseye = 99999.9f;
-        foreach (Rock rock in FindObjectsOfType<Rock>())
-        {
-            if (rock.team != winningTeam)
-            {
-                if (rock.DistanceFromBullseye() < closestToBullseye)
-                {
-                    closestToBullseye = rock.DistanceFromBullseye();
+        foreach ( Rock rock in FindObjectsOfType<Rock>() ) {
+            if ( rock.team != winningTeam ) {
+                if ( rock.DistanceFromBullseye() < closestToBullseye ) {
+                	closestToBullseye = rock.DistanceFromBullseye();
                 }
             }
         }
@@ -107,27 +86,22 @@ public class GameManager : MonoBehaviour {
         return closestToBullseye;
     }
 
-    private void GivePoints(eTeam winningTeam, float nmeDistanceFromBullseye)
-    {
+	private void GivePoints( eTeam winningTeam, float nmeDistanceFromBullseye ) {
         int points = 0;
 
-        foreach (Rock rock in FindObjectsOfType<Rock>())
-        {
-            if (rock.team == winningTeam)
-            {
-                if (rock.DistanceFromBullseye() < nmeDistanceFromBullseye)
-                {
+        foreach ( Rock rock in FindObjectsOfType<Rock>() ) {
+            if ( rock.team == winningTeam ) {
+                if ( rock.DistanceFromBullseye() < nmeDistanceFromBullseye ) {
                     points++;
                 }
             }
         }
-        GiveWinningTeamPoints(winningTeam, points);
+
+        GiveWinningTeamPoints( winningTeam, points );
     }
 
-    private void GiveWinningTeamPoints(eTeam team, int points)
-    {
-        switch (team)
-        {
+    private void GiveWinningTeamPoints( eTeam team, int points ) {
+        switch ( team ) {
             case eTeam.TEAM_1:
                 {
                     team1score += points;
@@ -141,38 +115,31 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void ChangeState(eGameState state)
-    {
+    public void ChangeState( eGameState state ) {
         mGameState = state;
 
-        if (state == eGameState.ePlayer)
-        {
+        if ( state == eGameState.ePlayer ) {
             playerCam.enabled = true;
             rockCam.enabled = false;
         }
 
-        if (state == eGameState.eRock)
-        {
+        if ( state == eGameState.eRock ) {
             playerCam.enabled = false;
             rockCam.enabled = true;
         }
     }
 
-    public eGameState GetState()
-    {
+    public eGameState GetState() {
         return mGameState;
     }
-=======
-	public static float getVolume()
-	{
+
+	public static float getVolume() {
 		return volume;
 	}
 
-	public static void setVolume( float newVolume )
-	{
+	public static void setVolume( float newVolume ) {
 		volume = newVolume / 100;
-		PlayerPrefs.SetFloat ("volume", volume );
+		PlayerPrefs.SetFloat( "volume", volume );
 		PlayerPrefs.Save();
 	}
->>>>>>> 6595167e78463383562485b933ee1b948a86c512
 }
