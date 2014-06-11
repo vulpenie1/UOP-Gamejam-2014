@@ -222,6 +222,8 @@ MonoBehaviour:
   score1: {fileID: 1491039557}
   score2: {fileID: 1548017346}
   currentTeam: {fileID: 1960690015}
+  redStones: {fileID: 2800000, guid: e580ba61bf3d4bc47a5d32e0f5c721ec, type: 3}
+  blueStones: {fileID: 0}
 --- !u!1 &1548017346
 GameObject:
   m_ObjectHideFlags: 0
