@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dc9ce91933f7843b4327f694ccac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
+  team: 1
   rockCamera: {fileID: 1542263584}
 --- !u!1 &186073407
 GameObject:
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dc9ce91933f7843b4327f694ccac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
+  team: 1
   rockCamera: {fileID: 1542263584}
 --- !u!1 &521779171
 GameObject:
@@ -1292,6 +1292,58 @@ Transform:
   - {fileID: 971318919}
   m_Father: {fileID: 1793797370}
   m_RootOrder: 3
+--- !u!1 &529979224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 529979226}
+  - 132: {fileID: 529979225}
+  m_Layer: 0
+  m_Name: Team1Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &529979225
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13200000, guid: bf885454931346546b7e5f55f141d341,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 529979224}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Team 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 23
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279374584
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &529979226
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 529979224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.10000002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1152944630}
+  m_RootOrder: 1
 --- !u!1 &544705769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1421,7 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: team
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
@@ -1525,7 +1577,7 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: team
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
@@ -1649,7 +1701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dc9ce91933f7843b4327f694ccac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 1
+  team: 0
   rockCamera: {fileID: 1542263584}
 --- !u!1 &666674375
 GameObject:
@@ -2252,7 +2304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dc9ce91933f7843b4327f694ccac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
+  team: 1
   rockCamera: {fileID: 1542263584}
 --- !u!1 &1105567255
 GameObject:
@@ -2281,6 +2333,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1718582980}
   m_RootOrder: 0
+--- !u!1 &1152944629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1152944630}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152944630
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1152944629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0500000007, y: -.100000024, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1349911097}
+  - {fileID: 529979226}
+  - {fileID: 1325554210}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &1160086247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,7 +2689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dc9ce91933f7843b4327f694ccac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 1
+  team: 0
   rockCamera: {fileID: 1542263584}
 --- !u!1001 &1303284163
 Prefab:
@@ -2665,6 +2747,110 @@ Prefab:
   m_RootGameObject: {fileID: 336004826}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1325554209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1325554210}
+  - 132: {fileID: 1325554211}
+  m_Layer: 0
+  m_Name: Team2Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1325554210
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325554209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.04999995, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1152944630}
+  m_RootOrder: 2
+--- !u!132 &1325554211
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13200002, guid: bf885454931346546b7e5f55f141d341,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325554209}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Team 2
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 23
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4291998083
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!1 &1349911096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1349911097}
+  - 132: {fileID: 1349911098}
+  m_Layer: 0
+  m_Name: CurrentTeam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1349911097
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: bf885454931346546b7e5f55f141d341, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1349911096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .395000011, y: .949999988, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1152944630}
+  m_RootOrder: 0
+--- !u!132 &1349911098
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13200004, guid: bf885454931346546b7e5f55f141d341,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1349911096}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Current Team
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 23
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1381864315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +3127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1488069796}
   - 114: {fileID: 1488069795}
+  - 114: {fileID: 1488069797}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2974,6 +3161,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1488069797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1488069794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d4242eb99fe60478505582eb1ed868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score1: {fileID: 529979224}
+  score2: {fileID: 1325554209}
+  currentTeam: {fileID: 1349911096}
+  redStones: {fileID: 2800000, guid: e580ba61bf3d4bc47a5d32e0f5c721ec, type: 3}
+  blueStones: {fileID: 2800000, guid: 8927b5d7ae25d194388676538e1ce06a, type: 3}
 --- !u!1 &1500712618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,7 +3294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dc9ce91933f7843b4327f694ccac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 1
+  team: 0
   rockCamera: {fileID: 1542263584}
 --- !u!1 &1503228166
 GameObject:
@@ -3526,6 +3729,10 @@ Prefab:
       propertyPath: rockCamera
       value: 
       objectReference: {fileID: 1542263584}
+    - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
+      propertyPath: team
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
   m_RootGameObject: {fileID: 734847752}
@@ -4010,7 +4217,7 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: team
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}

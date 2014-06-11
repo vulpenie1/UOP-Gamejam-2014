@@ -15,22 +15,19 @@ public class Rock : MonoBehaviour
     public GameManager.eTeam team;
     public Camera rockCamera;
 
-    private bool inSupply;
+    private bool inSupply, isPickedUp;
 
     Vector3 BULLSEYE_POSITION = new Vector3(10.0f, 10.0f, 10.0f);
 
     void Start()
     {
         inSupply = true;
+        isPickedUp = false;
         player = FindObjectOfType<Player>();
     }
 
     void Update()
     {
-        if (!InSupply())
-        {
-            transform.position = player.transform.position + new Vector3(0f, 0f, 1.5f);
-        }
     }
 
     public float DistanceFromBullseye()
@@ -46,16 +43,23 @@ public class Rock : MonoBehaviour
 
     public void Pickup()
     {
-        inSupply = false;
+        inSupply =      false;
+        isPickedUp =    true;
     }
 
     public void Fire()
     {
+        isPickedUp = false;
         rigidbody.velocity = player.rigidbody.velocity;
     }
 
     public bool InSupply()
     {
         return inSupply;
+    }
+
+    public bool IsPickedUp()
+    {
+        return isPickedUp;
     }
 }
