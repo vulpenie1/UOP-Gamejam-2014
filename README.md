@@ -4,13 +4,11 @@ UOP-Gamejam-2014
 Geri-Lynn Ramsay's Xtreme Curling 2014
 
 To Do List:
-
-  Sound
-    - Implement placeholder sounds
-	
-	UI
-	  - Score
-	  - Turn
+	+ Sound
+    		- Implement placeholder sound
+    	UI
+    		- Score
+    		- Turn
 	  - Current team?
 	  
 	Gamplay
@@ -18,3 +16,5 @@ To Do List:
 	  - 2nd player
 	  
 	  
+Stuff:
++ Stuff 1
