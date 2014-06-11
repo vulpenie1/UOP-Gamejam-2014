@@ -83,7 +83,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1491039559}
   - 132: {fileID: 1491039558}
-  - 114: {fileID: 1491039560}
   m_Layer: 0
   m_Name: Team1Score
   m_TagString: Untagged
@@ -99,7 +98,7 @@ GUIText:
   m_GameObject: {fileID: 1491039557}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'Team 1: 0'
+  m_Text: Team 1
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -121,21 +120,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1491039557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .100000001, y: .899999976, z: 0}
+  m_LocalPosition: {x: .100000001, y: -.100000024, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
---- !u!114 &1491039560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1491039557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d4242eb99fe60478505582eb1ed868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Father: {fileID: 1527571242}
 --- !u!1 &1527571237
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,8 +136,9 @@ GameObject:
   - 92: {fileID: 1527571240}
   - 124: {fileID: 1527571239}
   - 81: {fileID: 1527571238}
+  - 114: {fileID: 1527571243}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Hud
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,8 +203,25 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1960690017}
+  - {fileID: 1491039559}
+  - {fileID: 1548017349}
   m_Father: {fileID: 0}
+--- !u!114 &1527571243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527571237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d4242eb99fe60478505582eb1ed868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score1: {fileID: 1491039557}
+  score2: {fileID: 1548017346}
+  currentTeam: {fileID: 1960690015}
 --- !u!1 &1548017346
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +231,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1548017349}
   - 132: {fileID: 1548017348}
-  - 114: {fileID: 1548017347}
   m_Layer: 0
   m_Name: Team2Score
   m_TagString: Untagged
@@ -233,17 +238,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1548017347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1548017346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d4242eb99fe60478505582eb1ed868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!132 &1548017348
 GUIText:
   m_ObjectHideFlags: 0
@@ -252,7 +246,7 @@ GUIText:
   m_GameObject: {fileID: 1548017346}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'Team 2: 0'
+  m_Text: Team 2
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -274,7 +268,57 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1548017346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .800000012, y: .899999976, z: 0}
+  m_LocalPosition: {x: .800000012, y: -.100000024, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1527571242}
+--- !u!1 &1960690015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1960690017}
+  - 132: {fileID: 1960690016}
+  m_Layer: 0
+  m_Name: CurrentTeam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &1960690016
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1960690015}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Current Team
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 23
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &1960690017
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1960690015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .100000001, y: -.850000024, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1527571242}
