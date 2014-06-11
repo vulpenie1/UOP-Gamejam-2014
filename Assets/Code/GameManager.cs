@@ -69,6 +69,9 @@ public class GameManager : MonoBehaviour {
         eTeam winningTeam = GetRoundWinner();
         float nmeDistanceFromBullseye = GetNMEClosestToBullseye( winningTeam );
         GivePoints( winningTeam, nmeDistanceFromBullseye );
+        print(winningTeam);
+        print(team1score);
+        print(team2score);
     }
 
     private eTeam GetRoundWinner() {
