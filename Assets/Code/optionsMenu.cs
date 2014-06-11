@@ -21,7 +21,7 @@ public class optionsMenu : MonoBehaviour {
 
 		GameManager.setVolume( ( newVolume ) );
 
-		GUI.Label( new Rect( ( Screen.width / 2 ) - 50, ( Screen.height / 2 ) - 25 , 300, 25 ), "Volume: " + newVolume);
+		GUI.Label( new Rect( ( Screen.width / 2 ) - 40, ( Screen.height / 2 ) - 25 , 300, 25 ), "Volume: " + Mathf.Round( newVolume ) );
 
 	}
 }
