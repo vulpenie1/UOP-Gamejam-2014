@@ -92,8 +92,9 @@ public class Player : MonoBehaviour {
 			canShoot =						false;
 			canControl =					false;
 			stoneClone.transform.parent =	null;
-			camera.transform.parent =		stoneClone.transform;
+			//camera.transform.parent =		stoneClone.transform;
 			Vector3 forwardForce =			transform.forward;
+            SwitchCamera(GameManager.eGameState.eRock);
 			
 			forwardForce *= ( shootSpeed * shootSpeed );
 			stoneClone.rigidbody.AddForce( forwardForce );
