@@ -9,18 +9,15 @@ To Do List:
  * Implement placeholder sounds ( mostly done )
  * Add commentator sounds
  * Add team voices
-
 * UI
  * Score (each player)
  * Turn
  * Current team?
-
 * Gameplay
  * Win condition
  * 2nd player
  * Brushing
  * Power of rock throw
-
 * Art related
  * Menu Background
  * Player texture
@@ -29,15 +26,12 @@ To Do List:
  * Brushes
 
 Credits:
-
 * Programming
  * Zack Dutton
  * Dan Moody
  * Kierz Phillips
  * Aidan O'leary
-
 * Sound
  * Jacob Cooper
-
 * Art
  * Ricardo Catarino
