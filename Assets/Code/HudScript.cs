@@ -34,11 +34,13 @@ public class HudScript : MonoBehaviour {
 	}
 
 	//A function that updates the display for the current team
-	// --------- Change this when I have pulled the latest repo ----------
 	private void UpdateCurrentPlayer() {
-		//currentTeam = GameManager.IsTeamOne();
-		currentTeam.guiText.text = "Team 1's turn";
-
+		if (GameManager.IsTeamOne ()) {
+			currentTeam.guiText.text = "Team 1's turn";
+		} 
+		else {
+			currentTeam.guiText.text = "Team 2's turn";
+		}
 
 	}
 	
