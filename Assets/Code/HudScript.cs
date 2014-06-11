@@ -63,6 +63,9 @@ public class HudScript : MonoBehaviour {
 			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 100 + blueOffset, ( Screen.height / 2 ) - 220, 32, 32 ), blueStones);
 			blueOffset += 40;
 		}
+
+		redOffset = 0;
+		blueOffset = 0;
 	}
 	
 }

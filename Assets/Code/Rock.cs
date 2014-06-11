@@ -64,10 +64,10 @@ public class Rock : MonoBehaviour
     }
 
     private void ApplyFriction() {
-        Vector3 v = rigidbody.velocity.magnitude;
+        //Vector3 v = rigidbody.velocity.magnitude;
 
         if (rigidbody.velocity.magnitude > 0) {
-            rigidbody.ApplyForce(-v.x * FRICTION_PERCENTAGE, -v.y * FRICTION_PERCENTAGE, -v.z * FRICTION_PERCENTAGE);
+          //  rigidbody.ApplyForce(-v.x * FRICTION_PERCENTAGE, -v.y * FRICTION_PERCENTAGE, -v.z * FRICTION_PERCENTAGE);
         }
     }
 }
