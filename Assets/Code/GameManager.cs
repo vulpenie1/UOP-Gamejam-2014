@@ -1,7 +1,7 @@
 ﻿/*
 	File:			GameManager.cs
-	Author:			Krz, Dan
-	Project:		Geri-Lynn Ramsey's Xtreme Curling 2014
+	Author:			Krz, Dan, Zack
+	Project:		Curling Game
 	Soundtrack:		Station 90 Show 13: Simon Heartfield and Manni Dee
 	Description:	Manages the state of the game.
 */
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
 		return gm;
 	}
 
-    private void UpdateScores() {
+    public void UpdateScores() {
         eTeam winningTeam = GetRoundWinner();
         float nmeDistanceFromBullseye = GetNMEClosestToBullseye( winningTeam );
         GivePoints( winningTeam, nmeDistanceFromBullseye );
