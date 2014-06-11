@@ -156,40 +156,6 @@ public class Player : MonoBehaviour {
         return i;
     }
 
-    private int TeamOneStonesLeft()
-    {
-        int i = 0;
-
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1)
-            {
-                i++;
-            }
-        }
-
-        print(i);
-
-        return i;
-    }
-
-    private int TeamTwoStonesInSupply()
-    {
-        int i = 0;
-
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2)
-            {
-                i++;
-            }
-        }
-
-        print(i);
-
-        return i;
-    }
-
 	private void SwitchCamera( GameManager.eGameState state ) {
 		GameManager.Singleton().ChangeState( state );
     }
