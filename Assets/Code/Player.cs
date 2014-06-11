@@ -1,4 +1,15 @@
-﻿using UnityEngine;
+﻿/*
+	FILE:			Player.cs
+	AUHTOR:			Dan, Krz
+	PROJECT:		Geri-Lynn Ramsey's Xtreme Curling 2014
+	SOUNDTRACK:		Armin van Buuren Feat. Rank 1 & Kush - This world is watching me
+
+	DESCRIPTION:	The player.
+
+					Can be a brusher or a skip. Shoot stones and brushes.
+*/
+
+using UnityEngine;
 using System.Collections;
 
 public class Player : MonoBehaviour {
@@ -6,17 +17,20 @@ public class Player : MonoBehaviour {
 	public GameObject camera;
     public Camera rockCamera;
 
-	private float speed =			0.0f;
-	private float acceleration =	0.0005f;
-	private const float MAX_SPEED =	50.0f;
-	private float shootSpeed =		25.0f;
-	private float sensitivity =		4.2f;
-	private bool canShoot =			true;
-	private bool canControl =		true;
+	private float speed =				0.0f;
+	private float acceleration =		0.0005f;
+	private const float MAX_SPEED =		50.0f;
+	private float shootSpeed =			25.0f;
+	private float sensitivity =			4.2f;
+	private bool canShoot =				true;
+	private bool canControl =			true;
 
+	private Vector3 cameraToPlayerOffset;
 	private Rock stoneClone;
 
 	void Start() {
+		cameraToPlayerOffset =	new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+
 		GiveStone();
 	}
 
@@ -30,7 +44,7 @@ public class Player : MonoBehaviour {
 		// }
 
 		if ( camera.transform.parent == transform ) {
-			camera.transform.position =	new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+			camera.transform.position =	cameraToPlayerOffset;
 			camera.transform.rotation =	Quaternion.Euler( 30f, -90f, 0f );
 		}
 	}
@@ -59,81 +73,77 @@ public class Player : MonoBehaviour {
 		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;
 		transform.Rotate( 0f, -dy, 0f );
 	}
-    /*
-	public void GiveStone() {
-		Vector3 clonePos = transform.position;
+
+	public void GiveStone() 
+	{
+		camera.transform.parent =	transform;
+		camera.transform.position =	cameraToPlayerOffset;
+
+		transform.rotation =		Quaternion.identity;
+		Vector3 clonePos =			transform.position;
 		clonePos.z += 1.5f;
 
-		stoneClone = (GameObject) Instantiate( rock, clonePos, Quaternion.identity );
-		stoneClone.transform.parent = transform;
-	}*/
+		foreach ( Rock stone in FindObjectsOfType<Rock>() )
+		{
+			if ( stone.InSupply() )
+			{
+				stoneClone =					stone;
+				stone.transform.position =		clonePos;
+				stoneClone.transform.parent =	transform;
+				rockCamera.transform.parent =	stoneClone.transform;
+				break;
+			}
+		}
 
-    public void GiveStone() 
-    {
-        Vector3 clonePos = transform.position;
-        clonePos.z += 1.5f;
-
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-            if (stone.InSupply())
-            {
-                stoneClone = stone;
-                stone.transform.position = clonePos;
-                stoneClone.transform.parent = transform;
-                rockCamera.transform.parent = stoneClone.transform;
-                break;
-            }
-        }
-        
-    }
+		canControl = true;
+	}
 
 	public void ShootStone() {
 		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
 			canShoot =						false;
 			canControl =					false;
 			stoneClone.transform.parent =	null;
-			//camera.transform.parent =		stoneClone.transform;
+			camera.transform.parent =		stoneClone.transform;
 			Vector3 forwardForce =			transform.forward;
-            SwitchCamera(GameManager.eGameState.eRock);
 			
 			forwardForce *= ( shootSpeed * shootSpeed );
 			stoneClone.rigidbody.AddForce( forwardForce );
-            stoneClone.Fire();
+			stoneClone.Fire();
 
-       		StartCoroutine( StoneFired() );      
+			StartCoroutine( StoneFired() );      
 		}
 	}
 
-    private int StonesInSupply()
-    {
-        int i = 0;
+	private int StonesInSupply()
+	{
+		int i = 0;
 
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-            if (stone.InSupply())
-            {
-                i++;
-            }
-        }
+		foreach ( Rock stone in FindObjectsOfType<Rock>() )
+		{
+			if ( stone.InSupply() )
+			{
+				i++;
+			}
+		}
 
-        print(i);
+		print( i );
 
-        return i;
-    }
+		return i;
+	}
 
-    private IEnumerator StoneFired()
-    {
-        yield return new WaitForSeconds( 3 );
-		if (StonesInSupply() > 0)
-        {
-            GiveStone();
-            SwitchCamera(GameManager.eGameState.ePlayer);
-            canShoot = true;
-        }
-    }
+	private IEnumerator StoneFired()
+	{
+		yield return new WaitForSeconds( 3 );
+		if ( StonesInSupply() > 0 )
+		{
+			GiveStone();
+			SwitchCamera( GameManager.eGameState.ePlayer );
+			canShoot = true;
+		}
+	}
 
-    private void SwitchCamera(GameManager.eGameState state)
-    {
-        GameManager.Singleton().ChangeState(state);
-    }
+	private void SwitchCamera( GameManager.eGameState state )
+	{
+		GameManager.Singleton().ChangeState( state );
+	}
 }
