@@ -16,6 +16,9 @@ public class Player : MonoBehaviour {
 
 	private Rock stoneClone;
 
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION = new Vector3(0.0f, 4.0f, -5.5f);
+    private Vector3 ROCK_CAMERA_DEFAULT_ROTATION = new Vector3(30.0f, 0.0f, 0.0f);
+
 	void Start() {
 		GiveStone();
 	}
@@ -75,12 +78,13 @@ public class Player : MonoBehaviour {
 
         foreach (Rock stone in FindObjectsOfType<Rock>())
         {
-            if (stone.InSupply())
+            if (stone.InSupply() && stone.team == team)
             {
                 stoneClone = stone;
                 stone.transform.position = clonePos;
                 stoneClone.transform.parent = transform;
                 rockCamera.transform.parent = stoneClone.transform;
+                ResetRockCamera();
                 break;
             }
         }
@@ -94,7 +98,9 @@ public class Player : MonoBehaviour {
 			stoneClone.transform.parent =	null;
 			//camera.transform.parent =		stoneClone.transform;
 			Vector3 forwardForce =			transform.forward;
+            
             SwitchCamera(GameManager.eGameState.eRock);
+            SwitchTeam();
 			
 			forwardForce *= ( shootSpeed * shootSpeed );
 			stoneClone.rigidbody.AddForce( forwardForce );
@@ -121,19 +127,38 @@ public class Player : MonoBehaviour {
         return i;
     }
 
-    private IEnumerator StoneFired()
-    {
+    private IEnumerator StoneFired() {
         yield return new WaitForSeconds( 3 );
 		if (StonesInSupply() > 0)
         {
             GiveStone();
-            SwitchCamera(GameManager.eGameState.ePlayer);
+            SwitchCamera( GameManager.eGameState.ePlayer );
             canShoot = true;
         }
     }
 
-    private void SwitchCamera(GameManager.eGameState state)
-    {
+    private void SwitchCamera(GameManager.eGameState state) {
         GameManager.Singleton().ChangeState(state);
+    }
+
+    private void SwitchTeam() {
+        switch (team)
+        {
+            case GameManager.eTeam.TEAM_1:
+                {
+                    team = GameManager.eTeam.TEAM_2;
+                    break;
+                }
+            case GameManager.eTeam.TEAM_2:
+                {
+                    team = GameManager.eTeam.TEAM_1;
+                    break;
+                }
+        }
+    }
+
+    private void ResetRockCamera() {
+        rockCamera.transform.position = ROCK_CAMERA_DEFAULT_POSITION;
+        rockCamera.transform.rotation = Quaternion.Euler( ROCK_CAMERA_DEFAULT_ROTATION );
     }
 }

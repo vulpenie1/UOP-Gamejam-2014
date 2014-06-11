@@ -1,6 +1,6 @@
 ﻿/*
 	File:			GameManager.cs
-	Author:			Krz, Dan
+	Author:			Krz, Dan, Zack
 	Project:		Curling Game
 	Soundtrack:		Station 90 Show 13: Simon Heartfield and Manni Dee
 	Description:	Manages the state of the game.
