@@ -56,7 +56,11 @@
      <Compile Include="Assets\Code\optionsMenu.cs" />
      <None Include="Assets\Models\hi.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
+<<<<<<< HEAD
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+=======
+ <HintPath>C:/Users/Hybrid-Laptop/Documents/GitHub/UOP-Gamejam-2014/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+>>>>>>> 28935a22aa43b30aafceac9626825a9758409c76
  </Reference>
   </ItemGroup>
   <ItemGroup>
