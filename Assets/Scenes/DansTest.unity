@@ -3347,6 +3347,7 @@ GameObject:
   - 23: {fileID: 1591450705}
   - 114: {fileID: 1591450704}
   - 54: {fileID: 1591450709}
+  - 114: {fileID: 1591450710}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3360,7 +3361,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591450703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b92ebadbf31424f8f5190035f8f904, type: 3}
   m_Name: 
@@ -3439,6 +3440,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1591450710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591450703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8e3908441b0924886b5abfb61d6069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1601073020
 GameObject:
   m_ObjectHideFlags: 0
