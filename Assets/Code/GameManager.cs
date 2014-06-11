@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 		ChangeState (eGameState.ePlayer);
 	}
 
-	private static float  checkVolume() {
+	private static float checkVolume() {
 		if ( PlayerPrefs.GetFloat ( "volume " ) < 0.0f ) 
 		{
 			PlayerPrefs.SetFloat ( "volume", 1.0f );
