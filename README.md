@@ -16,3 +16,10 @@ To Do List:
  * 2nd player
  * Brushing
  * Power of rock throw
+* Art related
+ * Menu Background
+ * Player texture
+ * Curling rink
+ * Stone
+ * Brushes
+ * 
