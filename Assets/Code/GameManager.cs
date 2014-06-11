@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
 		return gm;
 	}
 
-    private void UpdateScores() {
+    public void UpdateScores() {
         eTeam winningTeam = GetRoundWinner();
         float nmeDistanceFromBullseye = GetNMEClosestToBullseye( winningTeam );
         GivePoints( winningTeam, nmeDistanceFromBullseye );
