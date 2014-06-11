@@ -85,7 +85,7 @@ GameObject:
   - 132: {fileID: 1491039558}
   - 114: {fileID: 1491039560}
   m_Layer: 0
-  m_Name: player1Score
+  m_Name: Team1Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ GUIText:
   m_GameObject: {fileID: 1491039557}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'Player 1: 0'
+  m_Text: 'Team 1: 0'
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -227,7 +227,7 @@ GameObject:
   - 132: {fileID: 1548017348}
   - 114: {fileID: 1548017347}
   m_Layer: 0
-  m_Name: player2Score
+  m_Name: Team2Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ GUIText:
   m_GameObject: {fileID: 1548017346}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'player 2: 0'
+  m_Text: 'Team 2: 0'
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
