@@ -10,7 +10,7 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	public static float volume = PlayerPrefs.GetFloat ( "volume" );
+	public static float volume = checkVolume();
     static Vector2 BULLSEYE_POSITION = new Vector2( 10.0f, 10.0f );
     private static int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
@@ -23,14 +23,26 @@ public class GameManager : MonoBehaviour {
         eRock,
     }
 
-    void Awake()
-    {
+    void Awake() {
         Screen.lockCursor = true;
         Screen.showCursor = false;
-        ChangeState( eGameState.ePlayer );
+		ChangeState (eGameState.ePlayer);
+	}
 
-        volume = PlayerPrefs.GetFloat( "volume" );
-		//volume = 1.0f;
+	private static float  checkVolume() {
+		if ( PlayerPrefs.GetFloat ( "volume " ) < 0.0f ) 
+		{
+			PlayerPrefs.SetFloat ( "volume", 1.0f );
+			PlayerPrefs.Save ();
+			volume = 1.0f;
+			return volume;
+		}
+		else 
+		{
+			volume = PlayerPrefs.GetFloat( "volume" );
+		}
+
+		return volume;
 	}
 	
 	void Update() {	
