@@ -17,19 +17,20 @@ public class Player : MonoBehaviour {
 	public GameObject camera;
     public Camera rockCamera;
 
-	private float speed =				0.0f;
-	private float acceleration =		0.0005f;
-	private const float MAX_SPEED =		50.0f;
-	private float shootSpeed =			25.0f;
-	private float sensitivity =			4.2f;
-	private bool canShoot =				true;
-	private bool canControl =			true;
+	private float speed =							0.0f;
+	private float acceleration =					0.0005f;
+	private const float MAX_SPEED =					50.0f;
+	private float shootSpeed =						25.0f;
+	private float sensitivity =						4.2f;
+	private bool canShoot =							true;
+	private bool canControl =						true;
 
 	private Vector3 cameraToPlayerOffset;
 	private Rock stoneClone;
 
-    private Vector3 ROCK_CAMERA_DEFAULT_POSITION = new Vector3(0.0f, 4.0f, -5.5f);
-    private Vector3 ROCK_CAMERA_DEFAULT_ROTATION = new Vector3(30.0f, 0.0f, 0.0f);
+	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, 0f );
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =	new Vector3(0.0f, 4.0f, -5.5f);
+    private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3(30.0f, 0.0f, 0.0f);
 
 	void Start() {
 		cameraToPlayerOffset =	new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
@@ -79,7 +80,10 @@ public class Player : MonoBehaviour {
 
     public void GiveStone() {
         bool found = false;
+
+        transform.position = DEFAULT_PLAYER_POSITION;
         transform.rotation = Quaternion.identity;
+
         Vector3 clonePos = transform.position;
         clonePos.z += 1.5f;
 		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
