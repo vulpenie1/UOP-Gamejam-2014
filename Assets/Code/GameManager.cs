@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    private int TeamOneStonesLeft()
+    public static int TeamOneStonesLeft()
     {
         int i = 0;
 
@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour {
         return i;
     }
 
-    private int TeamTwoStonesInSupply()
+    public static int TeamTwoStonesLeft()
     {
         int i = 0;
 
