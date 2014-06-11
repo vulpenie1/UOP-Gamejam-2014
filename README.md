@@ -16,5 +16,13 @@ To Do List:
 	  - 2nd player
 	  
 	  
-Stuff:
-+ Stuff 1
+
+* Sound
+ * Implement placeholder sounds
+* UI
+ * Score
+ * Turn
+ * Current team?
+* Gameplay
+ * Win condition
+ * 2nd player
