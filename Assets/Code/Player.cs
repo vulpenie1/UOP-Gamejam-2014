@@ -29,8 +29,8 @@ public class Player : MonoBehaviour {
 	private Rock stoneClone;
 
 	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, 0f );
-    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =	new Vector3(0.0f, 4.0f, -5.5f);
-    private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3(30.0f, 0.0f, 0.0f);
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =	new Vector3( 0.0f, 4.0f, -5.5f );
+    private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
 
 	void Start() {
 		cameraToPlayerOffset = new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
@@ -41,7 +41,8 @@ public class Player : MonoBehaviour {
 	void Update() {
 		Move();
 		Look();
-		ShootStone();
+		UpdateStone();
+		// ShootStone();
 
 		// if ( speed > 0 ) {
 		// 	speed -= acceleration;
@@ -99,7 +100,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-        if (found) {
+        if ( found ) {
             canControl = true;
         } else {
             // in case there are stones left and the current player is not on the same team as the last stones
@@ -108,84 +109,82 @@ public class Player : MonoBehaviour {
         }
 	}
 
-	public void ShootStone() {
-		if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
-            stoneClone.transform.parent =   null;
-
-            SwitchCamera(GameManager.eGameState.eRock);
-			
-            //Vector3 forwardForce =			transform.forward;
-            //forwardForce *= ( shootSpeed * shootSpeed );
-			//stoneClone.rigidbody.velocity = rigidbody.velocity;
-
-            stoneClone.Fire();
-            canShoot = false;
-            canControl = false;
-
-            // must be at the end
-            StartCoroutine( StoneFired() );      
+	public void UpdateStone() {
+		if ( stoneClone.IsPickedUp() ) {
+			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
+			if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
+				ShootStone();
+			}
 		}
 	}
 
+	public void ShootStone() {
+		stoneClone.transform.parent = null;
+
+        SwitchCamera( GameManager.eGameState.eRock );
+		
+        //Vector3 forwardForce =			transform.forward;
+        //forwardForce *= ( shootSpeed * shootSpeed );
+		//stoneClone.rigidbody.velocity = rigidbody.velocity;
+
+        stoneClone.Fire();
+        canShoot = false;
+        canControl = false;
+
+        // must be at the end
+        StartCoroutine( StoneFired() );
+	}
+
     private IEnumerator StoneFired() {
-        yield return new WaitForSeconds(3);
-        if (StonesInSupply() > 0) {
+        yield return new WaitForSeconds( 3 );
+        if ( StonesInSupply() > 0 ) {
             SwitchTeam();
             GiveStone();
             canShoot = true;
         } else {
             EndOfRound();
         }
-        SwitchCamera(GameManager.eGameState.ePlayer);
+
+        SwitchCamera( GameManager.eGameState.ePlayer );
     }
 
-    private int StonesInSupply()
-    {
+    private int StonesInSupply() {
         int i = 0;
-
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-            if (stone.InSupply())
-            {
+        foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
+            if ( stone.InSupply() ) {
                 i++;
             }
         }
 
-        print(i);
+        print( i );
 
         return i;
     }
 
-    private int TeamOneStonesLeft()
-    {
+    private int TeamOneStonesLeft() {
         int i = 0;
 
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1)
-            {
+        foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
+            if ( stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1 ) {
                 i++;
             }
         }
 
-        print(i);
+        print( i );
 
         return i;
     }
 
-    private int TeamTwoStonesInSupply()
-    {
+    private int TeamTwoStonesInSupply() {
         int i = 0;
 
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2)
-            {
+        foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
+            if ( stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2 ) {
                 i++;
             }
         }
 
-        print(i);
+        print( i );
 
         return i;
     }
@@ -195,23 +194,24 @@ public class Player : MonoBehaviour {
     }
 
     private void SwitchTeam() {
-        switch (team) {
+        switch ( team ) {
             case GameManager.eTeam.TEAM_1:
-                {
-                    team = GameManager.eTeam.TEAM_2;
-                    break;
-                }
+            {
+                team = GameManager.eTeam.TEAM_2;
+                break;
+            }
+
             case GameManager.eTeam.TEAM_2:
-                {
-                    team = GameManager.eTeam.TEAM_1;
-                    break;
-                }
+            {
+                team = GameManager.eTeam.TEAM_1;
+                break;
+            }
         }
     }
 
     private void ResetRockCamera() {
         rockCamera.transform.position = ROCK_CAMERA_DEFAULT_POSITION;
-        rockCamera.transform.rotation = Quaternion.Euler(ROCK_CAMERA_DEFAULT_ROTATION);
+        rockCamera.transform.rotation = Quaternion.Euler( ROCK_CAMERA_DEFAULT_ROTATION );
     }
 
     private void EndOfRound() {
