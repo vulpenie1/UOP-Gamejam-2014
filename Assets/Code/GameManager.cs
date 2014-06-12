@@ -117,15 +117,16 @@ public class GameManager : MonoBehaviour {
     private void GiveWinningTeamPoints( eTeam team, int points ) {
         switch ( team ) {
             case eTeam.TEAM_1:
-                {
-                    team1score += points;
-                    break;
-                }
+            {
+                team1score += points;
+                break;
+            }
+                
             case eTeam.TEAM_2:
-                {
-                    team2score += points;
-                    break;
-                }
+            {
+                team2score += points;
+                break;
+            }
         }
     }
 
