@@ -52,7 +52,7 @@ public class Rock : MonoBehaviour
 
     public void Fire() {
         isPickedUp =            false;
-        rigidbody.velocity =    player.rigidbody.velocity;
+        // rigidbody.velocity =    player.rigidbody.velocity;
     }
 
     public bool InSupply() {
