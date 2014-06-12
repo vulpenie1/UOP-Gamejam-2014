@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 		}
 		else 
 		{
-			volume = 1.0f
+			volume = 1.0f;
 		}
 
 		return volume;
