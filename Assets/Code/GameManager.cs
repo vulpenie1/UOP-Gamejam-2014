@@ -148,30 +148,27 @@ public class GameManager : MonoBehaviour {
         return mGameState;
     }
 
-	public static float getVolume() {
+    public float getVolume() {
 		return volume;
 	}
 
-	public static void setVolume( float newVolume ) {
+    public void setVolume(float newVolume) {
 		volume = newVolume / 100;
 		PlayerPrefs.SetFloat( "volume", volume );
 		PlayerPrefs.Save();
 	}
 
-	public static int[] getScore()
-	{
+    public int[] getScore() {
 		int[] scores = {team1score, team2score};
 		return scores;
 	}
 
-    public static bool IsTeamOne()
-    {
+    public bool IsTeamOne() {
         return (FindObjectOfType<Player>().team == eTeam.TEAM_1);
     }
 
 
-    public static int TeamOneStonesLeft()
-    {
+    public int TeamOneStonesLeft() {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>())
@@ -187,7 +184,7 @@ public class GameManager : MonoBehaviour {
         return i;
     }
 
-    public static int TeamTwoStonesLeft()
+    public int TeamTwoStonesLeft()
     {
         int i = 0;
 
