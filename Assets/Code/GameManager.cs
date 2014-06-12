@@ -1,4 +1,4 @@
-﻿/*
+/*
 	File:			GameManager.cs
 	Author:			Krz, Dan, Zack
 	Project:		Curling Game
@@ -10,6 +10,7 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+	
 	public static float volume = checkVolume();
     static Vector2 BULLSEYE_POSITION = new Vector2( 10.0f, 10.0f );
     private static int team1score = 0, team2score = 0;
@@ -30,16 +31,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private static float checkVolume() {
-		if ( PlayerPrefs.GetFloat ( "volume " ) < 0.0f ) 
+		if ( PlayerPrefs.HasKey("volume")) 
 		{
-			PlayerPrefs.SetFloat ( "volume", 1.0f );
-			PlayerPrefs.Save ();
-			volume = 1.0f;
+			volume = PlayerPrefs.GetFloat( "volume" );
 			return volume;
 		}
 		else 
 		{
-			volume = PlayerPrefs.GetFloat( "volume" );
+			volume = 1.0f;
 		}
 
 		return volume;
