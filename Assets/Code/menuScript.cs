@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class menuScript : MonoBehaviour {
+public class MenuScript : MonoBehaviour {
 
 	public string itemName;
 	public GameObject menuOutline;
@@ -13,11 +13,11 @@ public class menuScript : MonoBehaviour {
 	void Start () {
 		if ( PlayerPrefs.GetFloat("volume") < 0.0f )
 		{
-			GameManager.setVolume( 1.0f );
+			GameManager.Singleton().setVolume( 1.0f );
 			Debug.Log ("Volume was reset");
 		}
 
-		AudioListener.volume = GameManager.getVolume();
+        AudioListener.volume = GameManager.Singleton().getVolume();
 	}
 	
 	// Update is called once per frame
