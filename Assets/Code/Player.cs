@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	private float acceleration =					0.0005f;
 	private const float MAX_SPEED =					50.0f;
 	private float shootSpeed =						25.0f;
-	private float sensitivity =						4.2f;
+	private float sensitivity =						8.0f;
 	private bool canShoot =							true;
 	private bool canControl =						true;
 
