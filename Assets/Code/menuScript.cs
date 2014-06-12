@@ -14,7 +14,7 @@ public class MenuScript : MonoBehaviour {
 		Screen.lockCursor = false;
         Screen.showCursor = true;
 
-		if ( PlayerPrefs.GetFloat("volume") < 0.0f ) {
+		if ( !PlayerPrefs.HasKey("volume") {
 			GameManager.Singleton().setVolume( 1.0f );
 			Debug.Log ("Volume was reset");
 		}
