@@ -30,16 +30,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private static float checkVolume() {
-		if ( PlayerPrefs.GetFloat ( "volume " ) < 0.0f ) 
+		if ( PlayerPrefs.HasKey("volume")) 
 		{
-			PlayerPrefs.SetFloat ( "volume", 1.0f );
-			PlayerPrefs.Save ();
-			volume = 1.0f;
+			volume = PlayerPrefs.GetFloat( "volume" );
 			return volume;
 		}
 		else 
 		{
-			volume = PlayerPrefs.GetFloat( "volume" );
+			volume = 1.0f;
 		}
 
 		return volume;
